@@ -4,6 +4,7 @@ if (process.env.NODE_ENV != "production") {
 
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
@@ -14,7 +15,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-const mongoose = require("mongoose");
+
 //hey this is my change
 
 const listingRouter = require("./routes/listing.js");
@@ -53,15 +54,16 @@ const sessionOptions = {
   },
 };
 
-app.get("/", (req, res) => {
-  res.send("Hi, I am root");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hi, I am root");
+// });
 
 app.use(session(sessionOptions));
 app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -78,14 +80,14 @@ app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.all("*", (req, res, next) => {
-  next(new ExpressError(404, "Page not Found!"));
-});
+// app.all("*", (req, res, next) => {
+//   next(new ExpressError(404, "Page not Found!"));
+// });
 
-app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went Wrong!" } = err;
-  res.status(statusCode).render("error.ejs", { message });
-});
+// app.use((err, req, res, next) => {
+//   let { statusCode = 500, message = "Something went Wrong!" } = err;
+//   res.status(statusCode).render("error.ejs", { message });
+// });
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
