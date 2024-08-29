@@ -143,8 +143,27 @@ body {
 
 
 /* Map */
-#map { 
-   height: 200px; 
-   width: 80vh;
-
+.col-8.offset-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #map {
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    height: 400px; /* Adjust height as needed */
+  }
+  
+  @media (max-width: 768px) {
+    #map {
+      height: 300px; /* Adjust for medium screens */
     }
+  }
+  
+  @media (max-width: 576px) {
+    #map {
+      height: 200px; /* Adjust for small screens */
+    }
+  }
+  

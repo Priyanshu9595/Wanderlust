@@ -1,3 +1,7 @@
 git add .
 git commit -m "your message"
 git push
+id souravkr9012
+password jqIXjpNHP6SqRrR7
+
+mongodb+srv://souravkr9012:jqIXjpNHP6SqRrR7@cluster0.lfded.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0

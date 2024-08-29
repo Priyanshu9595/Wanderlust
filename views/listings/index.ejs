@@ -1,94 +1,212 @@
 <% layout("/layouts/boilerplate") %>
     <style>
-       #filters {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-       }
+     /* General Styles */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+#filters {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+#filters::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
+}
+
+.icon {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.tab-box {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 0 5px;
+  background-color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: transform 0.3s;
+}
+
+.filter:hover {
+  transform: scale(1.1);
+}
+
+.filter i {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.filter p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Responsive Styles */
+
+/* For screens less than 768px */
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 5px;
+  }
+
+  #filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .icon {
+    display: none; /* Hide navigation arrows on smaller screens */
+  }
+
   .filter {
-    text-align: center;
-    margin-right: 2rem;
-    margin-top: 2rem;
-    opacity: 0.7;
+    flex: 1 0 auto; /* Make filters take up more space */
+    margin: 0 3px;
   }
 
-  .filter:hover{
-    opacity: 1;
-    cursor:pointer;
-  }
-  .filter p{
-    font-size: 0.8rem;
+  .filter i {
+    font-size: 20px;
   }
 
-  .tax-info{
-    display: none;
+  .filter p {
+    font-size: 12px;
   }
-  .tex-toggle{
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 3rem;
-    width: 20vw;
-    border-radius: 1rem;
-    padding: 1rem;
-    margin-left: 5rem;
-    flex-wrap: nowrap;
+}
+
+/* For screens less than 480px */
+@media screen and (max-width: 480px) {
+  .header {
+    padding: 5px;
   }
+
+  .filter {
+    padding: 5px;
+    margin: 0 2px;
+  }
+
+  .filter i {
+    font-size: 18px;
+  }
+
+  .filter p {
+    font-size: 10px;
+  }
+}
+
     </style>
 
-    <div id="filters">
-      <div class="icon"><i class="fa-solid fa-angle-left" id="left"></i></div>
-  <div class="filter">
-   <div> <i class="fa-solid fa-fire"></i></div>
-   <p> Trending</p>
-  </div>
-  <div class="filter">
-    <div><i class="fa-solid fa-bed"></i></div>
-    <p> Rooms</p>
-   </div>
-   <div class="filter" data-filter-property="Iconic cities">
-    <div><i class="fa-solid fa-mountain-city"></i></div>
-    <p> Iconic cities</p>
-  </div>
-  <div class="filter" data-filter-property="Mountains">
-    <div><i class="fa-solid fa-mountain-sun"></i></div>
-    <p> Mountains</p>
-  </div>
-  <div class="filter" data-filter-property="Castles">
-    <div><i class="fa-brands fa-fort-awesome"></i></div>
-    <p> Castles</p>
-  </div>
-  <div class="filter" data-filter-property="Swiming pool">
-    <div><i class="fa-solid fa-person-swimming"></i></div>
-    <p>Amazing Pools</p>
-  </div>
-  <div class="filter" data-filter-property="Farm">
-    <div><i class="fa-solid fa-campground"></i></div>
-    <p>Camping</p>
-  </div>
- 
-  <div class="filter"data-filter-property="Temple">
-    <div><i class="fa-solid fa-tractor"></i></div>
-    <p>Farms</p>
-  </div>
-  <div class="filter"data-filter-property="Arctic">
-    <div><i class="fa-solid fa-person-snowboarding"></i></div>
-    <p>Arctic </p>
-  </div>
-  
-  <div class="filter"data-filter-property="Temple">
-    <div><i class="fa-solid fa-gopuram"></i></div>
-    <p>Temple</p>
-  </div>
-  <div class="filter" data-filter-property="Camping">
-    <div><i class="fa-solid fa-landmark-dome"></i></div>
-    <p>Domes</p>
-  </div>
-  <div class="filter" data-filter-property="Camping">
-    <div><i class="fa-solid fa-sailboat"></i></div>
-    <p>Boats</p>
-  </div>
+<div class="header">
+  <div id="filters">
+       <div class="icon"><i class="fa-solid fa-angle-left" id="left"></i></div>
+      <div class="tab-box">
+        <div class="filter">
+          <div><i class="fa-solid fa-fire"></i></div>
+          <p> All</p>
+        </div>
+        <div class="filter" data-filter-property="Rooms">
+          <a href="https://www.ixigo.com/hotels" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Iconic cities">
+          <a href="https://www.planetware.com/world/top-cities-in-the-world-to-visit-eng-1-39.htm" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic cities</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Mountains">
+          <a href="https://en.wikipedia.org/wiki/List_of_highest_mountains_on_Earth" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-mountain-sun"></i></div>
+            <p>Mountains</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Castles">
+          <a href="https://www.historyhit.com/guides/most-beautiful-castles-in-the-world/" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-brands fa-fort-awesome"></i></div>
+            <p>Castles</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Swiming pool">
+          <a href="https://www.thespruce.com/swimming-pool-types-designs-and-styles-2737104" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-person-swimming"></i></div>
+            <p>Swimming pool</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Farm">
+          <a href="https://farmingbase.com/types-of-farms/" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-tractor"></i></div>
+            <p>Farm</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Camping">
+          <a href="https://www.tourism-of-india.com/blog/best-camping-sites-in-india/" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Temple">
+          <a href="https://www.hindutsav.com/famous-temples-india/" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-gopuram"></i></div>
+            <p>Temple</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Arctic">
+          <a href="https://www.britannica.com/place/Arctic" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-person-snowboarding"></i></div>
+            <p>Arctic</p>
+          </a>
+        </div>
+        
+        
+        <div class="filter" data-filter-property="Arctic">
+          <a href="https://trains.abhibus.com/?channel=abhibus-web" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-train-tram"></i></div>
+            <p>Train</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Arctic">
+          <a href="https://www.abhibus.com/" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-bus"></i></div>
+            <p>Bus</p>
+          </a>
+        </div>
+        
+        <div class="filter" data-filter-property="Arctic">
+          <a href="https://www.ixigo.com/flights?utm_source=abhibus&utm_medium=abhiwebf" style="text-decoration: none; color: inherit;">
+            <div><i class="fa-solid fa-plane-departure"></i></div>
+            <p>Airplane</p>
+          </a>
+        </div>
+        
+      </div>
+       <div class="icon"><i class="fa-solid fa-angle-right" id="right"></i></div>
+ </div>
  
   <div class="tax-toggle">
     <div class="form-check form-check-reverse form-switch">
