@@ -168,69 +168,53 @@ body {
   }
   
   footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #222; /* Dark background for contrast */
+    color: #fff; /* White text for better visibility */
     padding: 20px;
-    text-align: center;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 .f-info {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
-
-.f-info-socials {
-    margin-bottom: 10px;
+    gap: 15px;
 }
 
 .f-info-socials a {
     color: #fff;
-    margin: 0 10px;
+    margin: 0 8px;
     font-size: 24px;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
 .f-info-socials a:hover {
-    color: #f39c12;
+    color: #f39c12; /* Highlight on hover */
 }
 
-.f-info-contact {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.f-info-contact p {
+.f-info-contact p,
+.f-info-brand,
+.f-info-links a {
     margin: 5px 0;
+    font-size: 16px; /* Slightly larger text for better readability */
 }
 
-.f-info-contact a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.f-info-contact a:hover {
-    color: #f39c12;
-}
-
-.f-info-brand {
-    margin: 10px 0;
-    font-size: 14px;
-}
-
+.f-info-contact a,
 .f-info-links a {
     color: #fff;
-    margin: 0 10px;
-    font-size: 14px;
     text-decoration: none;
-    transition: color 0.3s;
+    transition: color 0.2s;
 }
 
+.f-info-contact a:hover,
 .f-info-links a:hover {
     color: #f39c12;
+}
+
+/* Adding subtle shadow for icons to make them pop */
+.f-info-socials a i {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive Design */
@@ -238,14 +222,23 @@ body {
     .f-info {
         flex-direction: row;
         justify-content: space-between;
+        text-align: left;
     }
 
-    .f-info-socials, .f-info-contact, .f-info-brand, .f-info-links {
+    .f-info-socials {
         order: 1;
     }
-    
+
     .f-info-contact {
-        margin-left: auto;
-        margin-right: auto;
+        order: 2;
+        text-align: left;
+    }
+
+    .f-info-brand {
+        order: 3;
+    }
+
+    .f-info-links {
+        order: 4;
     }
 }
